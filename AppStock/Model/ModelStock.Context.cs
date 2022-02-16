@@ -26,5 +26,6 @@ namespace AppStock.Model
         }
     
         public virtual DbSet<Produit> Produit { get; set; }
+        public virtual DbSet<Utilisateur> Utilisateur { get; set; }
     }
 }

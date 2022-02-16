@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="bdStockModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="bdStockModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Produit">
           <Key>
             <PropertyRef Name="IdProduit" />
@@ -15,11 +15,21 @@
           <Property Name="QteProduit" Type="float" />
           <Property Name="PUProduit" Type="float" />
         </EntityType>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="IdUtilisateur" />
+          </Key>
+          <Property Name="IdUtilisateur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Identifiant" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="MotDePasse" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="80" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="1" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="bdStockModelStoreContainer">
           <EntitySet Name="Produit" EntityType="Self.Produit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="bdStockModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -35,7 +45,18 @@
         </EntityType>
         <EntityContainer Name="bdStockEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Produit" EntityType="Self.Produit" />
+          <EntitySet Name="Utilisateur" EntityType="bdStockModel.Utilisateur" />
         </EntityContainer>
+        <EntityType Name="Utilisateur">
+          <Key>
+            <PropertyRef Name="IdUtilisateur" />
+          </Key>
+          <Property Name="IdUtilisateur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Identifiant" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="MotDePasse" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -50,6 +71,17 @@
                 <ScalarProperty Name="DescriptionProduit" ColumnName="DescriptionProduit" />
                 <ScalarProperty Name="QteProduit" ColumnName="QteProduit" />
                 <ScalarProperty Name="PUProduit" ColumnName="PUProduit" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Utilisateur">
+            <EntityTypeMapping TypeName="bdStockModel.Utilisateur">
+              <MappingFragment StoreEntitySet="Utilisateur">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="MotDePasse" ColumnName="MotDePasse" />
+                <ScalarProperty Name="Identifiant" ColumnName="Identifiant" />
+                <ScalarProperty Name="IdUtilisateur" ColumnName="IdUtilisateur" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
