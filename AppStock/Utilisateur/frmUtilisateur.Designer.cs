@@ -77,6 +77,7 @@
             this.btnEnregistrer.TabIndex = 4;
             this.btnEnregistrer.Text = "&Enregistrer";
             this.btnEnregistrer.UseVisualStyleBackColor = false;
+            this.btnEnregistrer.Click += new System.EventHandler(this.btnEnregistrer_Click);
             // 
             // btnEffacer
             // 
@@ -87,6 +88,7 @@
             this.btnEffacer.TabIndex = 5;
             this.btnEffacer.Text = "E&ffacer";
             this.btnEffacer.UseVisualStyleBackColor = false;
+            this.btnEffacer.Click += new System.EventHandler(this.btnEffacer_Click);
             // 
             // frmUtilisateur
             // 
@@ -102,7 +104,6 @@
             this.Controls.Add(this.label1);
             this.Name = "frmUtilisateur";
             this.Text = "Utilisateur";
-            this.Load += new System.EventHandler(this.frmUtilisateur_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

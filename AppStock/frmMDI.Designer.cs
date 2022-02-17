@@ -74,6 +74,7 @@
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
             this.quitterToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.quitterToolStripMenuItem.Text = "&Quitter";
+            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
             // administrationToolStripMenuItem
             // 
@@ -86,7 +87,7 @@
             // utilisateurToolStripMenuItem
             // 
             this.utilisateurToolStripMenuItem.Name = "utilisateurToolStripMenuItem";
-            this.utilisateurToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.utilisateurToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.utilisateurToolStripMenuItem.Text = "Ajout utilisateur";
             this.utilisateurToolStripMenuItem.Click += new System.EventHandler(this.utilisateurToolStripMenuItem_Click);
             // 

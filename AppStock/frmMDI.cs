@@ -47,5 +47,10 @@ namespace AppStock
             f.Show();
             f.WindowState = FormWindowState.Maximized;
         }
+
+        private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
