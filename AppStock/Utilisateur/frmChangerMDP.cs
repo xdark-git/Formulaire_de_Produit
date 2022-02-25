@@ -32,13 +32,19 @@ namespace AppStock.Utilisateur
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-            var leUser = db.Utilisateur.Where(a => a.Identifiant == identifiant).FirstOrDefault();
-            leUser.SetPassword(txtNouveauMotDePasse.Text);
-            db.SaveChanges();
-            frmMDI f = new frmMDI();
-            f.Show();
-            this.Hide();
-            //MessageBox.Show("Bonjour votre identifiant est : "+ identifiant);
+           if(txtNouveauMotDePasse.Text == "P@sser321")
+            {
+                MessageBox.Show("Vous ne pouvez pas réutiliser ce mot de passe");
+            }
+            else
+            {
+                var leUser = db.Utilisateur.Where(a => a.Identifiant == identifiant).FirstOrDefault();
+                leUser.SetPassword(txtNouveauMotDePasse.Text);
+                db.SaveChanges();
+                frmMDI f = new frmMDI();
+                f.Show();
+                this.Hide();
+            }
         }
 
         private void frmChangerMDP_Load(object sender, EventArgs e)

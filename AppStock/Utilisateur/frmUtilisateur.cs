@@ -25,6 +25,13 @@ namespace AppStock.Utilisateur
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
+            var leUser = db.Utilisateur.Where(a => a.Identifiant == txtIdentifiant.Text).FirstOrDefault();
+           if(leUser != null)
+            {
+                MessageBox.Show("Cet utilisateur existe dans votre base de données");
+            }
+           else
+            {
                 var u = new Model.Utilisateur
                 {
                     Identifiant = txtIdentifiant.Text,
@@ -32,10 +39,11 @@ namespace AppStock.Utilisateur
                     Status = "O"
                 };
                 u.SetPassword("P@sser321");
-               
+
                 db.Utilisateur.Add(u);
                 db.SaveChanges();
                 Effacer();
+            }
         }
 
         public void Effacer()
