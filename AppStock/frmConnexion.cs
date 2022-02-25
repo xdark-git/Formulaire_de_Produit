@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AppStock.Model;
+using AppStock.Utilisateur;
 using AppStock.App_Code;
 using System.Security.Cryptography;
 
@@ -15,7 +16,8 @@ namespace AppStock
 {
     public partial class frmConnexion : Form
     {
-         bdStockEntities db = new bdStockEntities(); 
+        bdStockEntities db = new bdStockEntities();
+   
         public frmConnexion()
         {
             InitializeComponent();
@@ -34,13 +36,22 @@ namespace AppStock
             }
             if(rep)
             {
-                frmMDI f = new frmMDI();
-                f.Show();
-                this.Hide();
+                if(txtMotDePasse.Text == "P@sser321")
+                {
+                    frmChangerMDP f = new frmChangerMDP(txtIdentifiant.Text);
+                    f.Show();
+                    this.Hide();
+                }
+                else
+                {
+                    frmMDI f = new frmMDI();
+                    f.Show();
+                    this.Hide();
+                }
             }
             else
             {
-                lblMessage.Text = "Identifiant ou mot de passe incorrect";
+                MessageBox.Show("Identifiant ou mot de passe incorrect");
             }
         }
 

@@ -25,18 +25,17 @@ namespace AppStock.Utilisateur
 
         private void btnEnregistrer_Click(object sender, EventArgs e)
         {
-          using (MD5 md5Hash = MD5.Create())
-            {
-                Model.Utilisateur u = new Model.Utilisateur();
-                u.Identifiant = txtIdentifiant.Text;
-                u.Email = txtEmail.Text;
-                u.MotDePasse = Helper.GetMd5Hash(md5Hash,"P@sser321");
-                u.Status = "O";
+                var u = new Model.Utilisateur
+                {
+                    Identifiant = txtIdentifiant.Text,
+                    Email = txtEmail.Text,
+                    Status = "O"
+                };
+                u.SetPassword("P@sser321");
+               
                 db.Utilisateur.Add(u);
                 db.SaveChanges();
                 Effacer();
-
-            }
         }
 
         public void Effacer()
